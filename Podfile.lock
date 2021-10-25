@@ -1,0 +1,20 @@
+PODS:
+  - EasyDi (1.6.1)
+  - Kingfisher (7.1.0)
+
+DEPENDENCIES:
+  - EasyDi
+  - Kingfisher (~> 7.0)
+
+SPEC REPOS:
+  trunk:
+    - EasyDi
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  EasyDi: 3d7d4c0d3ad2d78b3ff22d4755590d32945f69cc
+  Kingfisher: cdabaf49be7ee7cc124f0f276b355edf61903cf8
+
+PODFILE CHECKSUM: 85edb8758a7609e895625e0c1c61501f8b144a58
+
+COCOAPODS: 1.11.1
