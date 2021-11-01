@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0935E83A27243DB2006700FB /* CryptoDetailLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935E83927243DB2006700FB /* CryptoDetailLoadView.swift */; };
+		0935E84427268AD6006700FB /* SearchResultTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935E84327268AD6006700FB /* SearchResultTableView.swift */; };
+		0935E84627268AE1006700FB /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935E84527268AE1006700FB /* SearchResultViewModel.swift */; };
+		0935E84827268AEF006700FB /* SearchResultAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935E84727268AEF006700FB /* SearchResultAssembly.swift */; };
+		0935E85027269671006700FB /* CryptoTable_MVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0935E84F27269671006700FB /* CryptoTable_MVVMTests.swift */; };
 		09EC5C76271D4A8100F36352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC5C75271D4A8100F36352 /* AppDelegate.swift */; };
 		09EC5C78271D4A8100F36352 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC5C77271D4A8100F36352 /* SceneDelegate.swift */; };
 		09EC5C7A271D4A8100F36352 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EC5C79271D4A8100F36352 /* TableViewController.swift */; };
@@ -31,8 +35,23 @@
 		0C986A7E2DB482873EF35F2A /* Pods_CryptoTable_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1260844A834B3B3E97BFBB /* Pods_CryptoTable_MVVM.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0935E85127269671006700FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09EC5C6A271D4A8100F36352 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09EC5C71271D4A8100F36352;
+			remoteInfo = "CryptoTable-MVVM";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0935E83927243DB2006700FB /* CryptoDetailLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailLoadView.swift; sourceTree = "<group>"; };
+		0935E84327268AD6006700FB /* SearchResultTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableView.swift; sourceTree = "<group>"; };
+		0935E84527268AE1006700FB /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		0935E84727268AEF006700FB /* SearchResultAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultAssembly.swift; sourceTree = "<group>"; };
+		0935E84D27269671006700FB /* CryptoTable-MVVMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CryptoTable-MVVMTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0935E84F27269671006700FB /* CryptoTable_MVVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTable_MVVMTests.swift; sourceTree = "<group>"; };
 		09EC5C72271D4A8100F36352 /* CryptoTable-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CryptoTable-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09EC5C75271D4A8100F36352 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09EC5C77271D4A8100F36352 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +80,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0935E84A27269671006700FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09EC5C6F271D4A8100F36352 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,10 +98,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0935E84227268AB1006700FB /* SearchResultModule */ = {
+			isa = PBXGroup;
+			children = (
+				0935E84327268AD6006700FB /* SearchResultTableView.swift */,
+				0935E84527268AE1006700FB /* SearchResultViewModel.swift */,
+				0935E84727268AEF006700FB /* SearchResultAssembly.swift */,
+			);
+			path = SearchResultModule;
+			sourceTree = "<group>";
+		};
+		0935E84E27269671006700FB /* CryptoTable-MVVMTests */ = {
+			isa = PBXGroup;
+			children = (
+				0935E84F27269671006700FB /* CryptoTable_MVVMTests.swift */,
+			);
+			path = "CryptoTable-MVVMTests";
+			sourceTree = "<group>";
+		};
 		09EC5C69271D4A8100F36352 = {
 			isa = PBXGroup;
 			children = (
 				09EC5C74271D4A8100F36352 /* CryptoTable-MVVM */,
+				0935E84E27269671006700FB /* CryptoTable-MVVMTests */,
 				09EC5C73271D4A8100F36352 /* Products */,
 				45C0D17B7D569B5919EDF231 /* Pods */,
 				4F034ECB9F9F04EB056D8C0F /* Frameworks */,
@@ -86,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				09EC5C72271D4A8100F36352 /* CryptoTable-MVVM.app */,
+				0935E84D27269671006700FB /* CryptoTable-MVVMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +145,7 @@
 				09EC5CA6271D4CA900F36352 /* Model */,
 				09EC5C8D271D4B0800F36352 /* Router */,
 				09EC5C8C271D4B0300F36352 /* Services */,
+				0935E84227268AB1006700FB /* SearchResultModule */,
 				09EC5C8B271D4AFB00F36352 /* DetailViewModule */,
 				09EC5C8A271D4AEA00F36352 /* TableViewModule */,
 			);
@@ -219,6 +266,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0935E84C27269671006700FB /* CryptoTable-MVVMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0935E85327269671006700FB /* Build configuration list for PBXNativeTarget "CryptoTable-MVVMTests" */;
+			buildPhases = (
+				0935E84927269671006700FB /* Sources */,
+				0935E84A27269671006700FB /* Frameworks */,
+				0935E84B27269671006700FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0935E85227269671006700FB /* PBXTargetDependency */,
+			);
+			name = "CryptoTable-MVVMTests";
+			productName = "CryptoTable-MVVMTests";
+			productReference = 0935E84D27269671006700FB /* CryptoTable-MVVMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		09EC5C71271D4A8100F36352 /* CryptoTable-MVVM */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09EC5C86271D4A8300F36352 /* Build configuration list for PBXNativeTarget "CryptoTable-MVVM" */;
@@ -248,6 +313,10 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					0935E84C27269671006700FB = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 09EC5C71271D4A8100F36352;
+					};
 					09EC5C71271D4A8100F36352 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -267,11 +336,19 @@
 			projectRoot = "";
 			targets = (
 				09EC5C71271D4A8100F36352 /* CryptoTable-MVVM */,
+				0935E84C27269671006700FB /* CryptoTable-MVVMTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0935E84B27269671006700FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09EC5C70271D4A8100F36352 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,6 +403,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0935E84927269671006700FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0935E85027269671006700FB /* CryptoTable_MVVMTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09EC5C6E271D4A8100F36352 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,6 +422,8 @@
 				09EC5C97271D4C2200F36352 /* DetailViewAssembly.swift in Sources */,
 				09EC5C76271D4A8100F36352 /* AppDelegate.swift in Sources */,
 				09EC5C8F271D4BE200F36352 /* TableVIewModel.swift in Sources */,
+				0935E84627268AE1006700FB /* SearchResultViewModel.swift in Sources */,
+				0935E84827268AEF006700FB /* SearchResultAssembly.swift in Sources */,
 				09EC5C95271D4C1500F36352 /* DetailViewModel.swift in Sources */,
 				09EC5C9B271D4C3E00F36352 /* NetworkService.swift in Sources */,
 				09EC5C93271D4C0B00F36352 /* DetailViewController.swift in Sources */,
@@ -348,11 +435,20 @@
 				09EC5CA3271D4C8000F36352 /* Router.swift in Sources */,
 				09EC5CAE272057A800F36352 /* Storage.swift in Sources */,
 				09EC5CAB271D4FE100F36352 /* CryptoTableCellState.swift in Sources */,
+				0935E84427268AD6006700FB /* SearchResultTableView.swift in Sources */,
 				0935E83A27243DB2006700FB /* CryptoDetailLoadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0935E85227269671006700FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09EC5C71271D4A8100F36352 /* CryptoTable-MVVM */;
+			targetProxy = 0935E85127269671006700FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		09EC5C80271D4A8300F36352 /* LaunchScreen.storyboard */ = {
@@ -366,6 +462,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0935E85427269671006700FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99XS77ENQR;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vanamah.CryptoTable-MVVMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoTable-MVVM.app/CryptoTable-MVVM";
+			};
+			name = Debug;
+		};
+		0935E85527269671006700FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 99XS77ENQR;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vanamah.CryptoTable-MVVMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoTable-MVVM.app/CryptoTable-MVVM";
+			};
+			name = Release;
+		};
 		09EC5C84271D4A8300F36352 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -541,6 +683,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0935E85327269671006700FB /* Build configuration list for PBXNativeTarget "CryptoTable-MVVMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0935E85427269671006700FB /* Debug */,
+				0935E85527269671006700FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		09EC5C6D271D4A8100F36352 /* Build configuration list for PBXProject "CryptoTable-MVVM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

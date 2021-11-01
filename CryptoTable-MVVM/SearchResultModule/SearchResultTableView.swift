@@ -1,25 +1,23 @@
 //
-//  ViewController.swift
+//  SearchResultTableView.swift
 //  CryptoTable-MVVM
 //
-//  Created by Ivan Amakhin on 18.10.2021.
+//  Created by Ivan Amakhin on 25.10.2021.
 //
 
 import UIKit
 import Combine
 
-class TableViewController: UITableViewController {
+class SearchResultTableView: UITableViewController {
     
     var router: Router!
     var tableModel: TableViewModel!
     var tokens: Set<AnyCancellable> = []
-    var searchTextSubject: CurrentValueSubject<String?, Never>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.register(CryptoTableViewCell.self, forCellReuseIdentifier: CryptoTableViewCell.reuseId)
-    
+        
         tableModel
             .state
             .receive(on: DispatchQueue.main)
@@ -43,32 +41,21 @@ class TableViewController: UITableViewController {
             })
             .store(in: &tokens)
 
-        tableModel
-            .state
-            .receive(on: DispatchQueue.main)
-            .map(\.isOperating)
-            .removeDuplicates()
-            .sink(receiveCompletion: {_ in}, receiveValue: {[weak self] in
-                self?.toggle(isLoading: $0)
-            })
-            .store(in: &tokens)
-
+        
         tableModel.fetch()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableModel.state.value.cryptocurrency.count
+        tableModel.state.value.cryptocurrency.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == tableModel.state.value.cryptocurrency.count - 1 {
-            tableModel.loadMore()
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: CryptoTableViewCell.reuseId, for: indexPath) as! CryptoTableViewCell
         
-        cell.state = tableModel.cellState()[indexPath.row]
+        let state = tableModel.cellState()[indexPath.row]
+        
+        cell.state = state
         
         return cell
     }
@@ -77,18 +64,5 @@ class TableViewController: UITableViewController {
         let currency = tableModel.state.value.cryptocurrency[indexPath.row]
         router.showCryptoDetail(currency: currency)
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-}
-
-extension TableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        searchTextSubject.send(searchController.searchBar.text)
-    }
-}
-
-extension TableViewController {
-    func toggle(isLoading: Bool) {
-        
     }
 }

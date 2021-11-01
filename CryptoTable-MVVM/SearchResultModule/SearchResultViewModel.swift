@@ -1,51 +1,31 @@
 //
-//  TableViewVIewModel.swift
+//  SearchResultViewModel.swift
 //  CryptoTable-MVVM
 //
-//  Created by Ivan Amakhin on 18.10.2021.
+//  Created by Ivan Amakhin on 25.10.2021.
 //
 
-import Combine
 import Foundation
+import Combine
 
-struct TableViewModelState: Equatable {
+
+class SearchResultViewModelImpl: TableViewModel {
     
-    let isOperating: Bool
-    var cryptocurrency: [Cryptocurrency]
-    let error: Error?
-    
-    static func ==(lhs: TableViewModelState, rhs: TableViewModelState) -> Bool {
-        lhs.isOperating == rhs.isOperating && lhs.cryptocurrency == rhs.cryptocurrency
-    }
-}
-
-protocol SearchModel {
-    var searchText: CurrentValueSubject<String, Error> { get }
-    var searchResults: CurrentValueSubject<[CryptoTableCellState], Error> { get }
-}
-
-protocol TableViewModel {
-    var state: CurrentValueSubject<TableViewModelState, Error> { get }
-    func fetch()
-    func loadMore()
-    func cellState() -> [CryptoTableCellState]
-}
-
-class TableViewModelImpl: TableViewModel {
     
     var service: CryptoCurrencyService! // injected
     
     var state: CurrentValueSubject<TableViewModelState, Error> = .init(TableViewModelState(isOperating: false, cryptocurrency: [], error: nil))
     
-    var serviceToken: AnyCancellable?
-    var searchToken: AnyCancellable?
     var currenciesState = [Cryptocurrency]()
+    var tokens: Set<AnyCancellable> = []
+    let searchText: CurrentValueSubject<String?, Never>
     
-    func fetch() {
-        state.send(TableViewModelState(isOperating: true, cryptocurrency: state.value.cryptocurrency, error: state.value.error)) // redux like
-        
-        serviceToken = service
-            .get(loadedCount: 99)
+    init(search: CurrentValueSubject<String?, Never>) {
+        searchText = search
+        search
+            .compactMap{$0}
+            .removeDuplicates()
+            .flatMap { self.service.search(substring: $0, loadedCount: 99) }
             .map { TableViewModelState(isOperating: false, cryptocurrency: $0.cryptocurrencies, error: nil)}
             .sink(receiveCompletion: {
                 if case let .failure(error) = $0 {
@@ -54,11 +34,16 @@ class TableViewModelImpl: TableViewModel {
             },
             receiveValue: {
                 self.state.send($0)
-            })
+            }).store(in: &tokens)
+    }
+    
+    func fetch() {
+        
     }
     
     func loadMore() {
-        serviceToken = service.get(loadedCount: state.value.cryptocurrency.count)
+        guard let text = searchText.value else { return }
+        service.search(substring: text, loadedCount: 99)
             .map { TableViewModelState(isOperating: false, cryptocurrency: $0.cryptocurrencies, error: nil)}
             .sink(receiveCompletion: {
                 if case let .failure(error) = $0 {
@@ -67,7 +52,7 @@ class TableViewModelImpl: TableViewModel {
             },
             receiveValue: {
                 self.state.value.cryptocurrency.append(contentsOf: $0.cryptocurrency)
-            })
+            }).store(in: &tokens)
     }
     
     func cellState() -> [CryptoTableCellState] {
@@ -81,4 +66,3 @@ class TableViewModelImpl: TableViewModel {
         }
     }
 }
-

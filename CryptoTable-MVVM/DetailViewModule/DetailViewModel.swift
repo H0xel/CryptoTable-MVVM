@@ -15,7 +15,6 @@ protocol DetailViewModel {
 
 class DeatilViewModelImpl: DetailViewModel {
     
-    
     var cryptoCurrency: Cryptocurrency!
     
     var state: CurrentValueSubject<CryptoDetailState, Error> = .init(CryptoDetailState(name: "", price: "", chart: nil))

@@ -9,10 +9,6 @@ import UIKit
 import Kingfisher
 import Combine
 
-protocol DetailView: AnyObject {
-    func display(currencyTitle: String, currencyPrice: String, chartImageUrl: String)
-}
-
 class DetailViewController: UIViewController {
     
     var detailModel: DetailViewModel! // injected
@@ -37,7 +33,6 @@ class DetailViewController: UIViewController {
             .store(in: &tokens)
         
         detailModel.fetch()
-        
         
     }
 }
